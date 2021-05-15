@@ -2,12 +2,11 @@
 #define PIEZA_H
 #include <string>
 using std::string;
-class Pieza
-{
+class Pieza {
 	private:
 		bool pieza;
 		bool reina;
-	
+
 	public:
 		Pieza();
 		Pieza(bool, bool);
