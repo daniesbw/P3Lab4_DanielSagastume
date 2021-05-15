@@ -10,7 +10,7 @@ class Damas {
 		void preparar();
 		void imprimir();
 		bool gano();
-		bool movement(int, int, int, int);
+		bool movement(int, int, int, int, int);
 		bool capturar(int, int, int, int);
 		void jugar();
 		void freeMatrix();

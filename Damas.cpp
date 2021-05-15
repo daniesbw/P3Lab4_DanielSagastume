@@ -76,58 +76,77 @@ void Damas::imprimir() {
 	}
 }
 
-void Damas::jugar(){
+void Damas::jugar() {
 	int turno=0;
-	while(gano()==false){
-		if(turno==0){
+	while(gano()==false) {
+		if(turno==0) {
 			int x=0,y=0,objX=0,objY=0;
 			imprimir();
-			cout<<"Ingrese la coordenada x de la pieza: ";cin>>x;
-			cout<<"Ingrese la coordenada y de la pieza: ";cin>>y;
-			cout<<"Ingrese la coordenada x de la casilla donde va a mover: ";cin>>objX;
-			cout<<"Ingrese la coordenada y de la casilla donde va a mover: ";cin>>objX;
-			bool valid=movement(x,y,objX,objY);
+			cout<<"Ingrese la coordenada x de la pieza: ";
+			cin>>x;
+			cout<<"Ingrese la coordenada y de la pieza: ";
+			cin>>y;
+			cout<<"Ingrese la coordenada x de la casilla donde va a mover: ";
+			cin>>objX;
+			cout<<"Ingrese la coordenada y de la casilla donde va a mover: ";
+			cin>>objX;
+			bool valid=movement(x,y,objX,objY, turno);
+			if(valid==true){
+				cout<<"Movimiento valido"<<endl;
+			}else{
+				cout<<"Movimiento no valido"<<endl;
+			}
 			turno=1;
 
-		}else{
+		} else {
 			int x=0,y=0,objX=0,objY=0;
 			imprimir();
-			cout<<"Ingrese la coordenada x de la pieza: ";cin>>x;
-			cout<<"Ingrese la coordenada y de la pieza: ";cin>>y;
-			cout<<"Ingrese la coordenada x de la casilla donde va a mover: ";cin>>objX;
-			cout<<"Ingrese la coordenada y de la casilla donde va a mover: ";cin>>objX;
-			bool valid=movement(x,y,objX,objY);	
+			cout<<"Ingrese la coordenada x de la pieza: ";
+			cin>>x;
+			cout<<"Ingrese la coordenada y de la pieza: ";
+			cin>>y;
+			cout<<"Ingrese la coordenada x de la casilla donde va a mover: ";
+			cin>>objX;
+			cout<<"Ingrese la coordenada y de la casilla donde va a mover: ";
+			cin>>objX;
+			bool valid=movement(x,y,objX,objY, turno);
+			if(valid==true){
+				cout<<"Movimiento valido"<<endl;
+			}else{
+				cout<<"Movimiento no valido"<<endl;
+			}
 			turno=0;
 		}
 	}
 }
 
-bool Damas::movement(int x, int y, int objX, int objY){
+bool Damas::movement(int x, int y, int objX, int objY, int turno) {
 	bool valido=false;
-	string s=matrix[x][y]->toString();
-
-	cout<<s<<endl;
+	if(matrix[objY][objX]==NULL) {
+		if(objX-x==1||objX-x==-1||objY-y==1||objY-y==-1){
+			valido=true;	
+		}	
+	}
 	return valido;
 }
 
 
-bool Damas::gano()
-{
+bool Damas::gano() {
 	bool win=false;
 	int O=0;
-	
-	for(int i=0;i<8;i++){
-		for(int j=0;j<8;j++){
-			if(matrix[i][j]!=NULL){
+
+	for(int i=0; i<8; i++) {
+		for(int j=0; j<8; j++) {
+			if(matrix[i][j]!=NULL) {
 				O++;
 			}
 		}
-	}	
-	
-	if(O<=12){
+	}
+
+	if(O<=12) {
 		win=true;
 	}
-	return win;			
+	return win;
 }
 
 
